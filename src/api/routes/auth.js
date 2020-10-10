@@ -22,22 +22,6 @@ module.exports = (app) => {
       } catch (err) {
         res.status(401).json({ message: err.message });
       }
-      /* const { email, password, name } = req.body;
-    const saltRounds = 10;
-    bcrypt.hash(password, saltRounds, async (err, hash) => {
-      if (err) return next(err);
-      try {
-        await User.create({
-          email,
-          password: hash,
-          name,
-        });
-        return res.json({ message: "join success" });
-      } catch (dbErr) {
-        console.error(dbErr);
-        return next(dbErr);
-      }
-    });*/
     }
   );
 };
