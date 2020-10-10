@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { celebrate, Joi, errors, Segments } = require("celebrate");
+const config = require("../../config");
 
 const router = Router();
 module.exports = (app) => {
@@ -10,9 +11,7 @@ module.exports = (app) => {
     celebrate({
       [Segments.BODY]: Joi.object().keys({
         email: Joi.string().email().required(),
-        password: Joi.string()
-          .required()
-          .regex(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/),
+        password: Joi.string().required().regex(config.pwdRestriction),
         name: Joi.string().required().max(10),
       }),
     }),
