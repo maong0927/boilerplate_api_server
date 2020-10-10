@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 module.exports = new (class AuthService {
   join(body) {
     const { email, password, name } = body;
+    const saltRounds = 10;
     bcrypt.hash(password, saltRounds, async (err, hash) => {
       if (err) return next(err);
       await User.create({

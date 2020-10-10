@@ -1,5 +1,5 @@
 const expressLoader = require("./express.js");
-const sequelizeLoader = require("./sequelize.js");
+const sequelizeLoader = require("../models");
 
 module.exports = async (app) => {
   await expressLoader(app);
