@@ -8,7 +8,7 @@ module.exports = (app) => {
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-  app.use("/", routes);
+  routes(app);
   // catch 404 and forward to error handler
   app.use((req, res, next) => {
     next(createError(404));

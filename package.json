@@ -13,6 +13,7 @@
   "author": "Hera",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "celebrate": "^13.0.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",

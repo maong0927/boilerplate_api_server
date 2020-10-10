@@ -1,9 +1,6 @@
-const express = require("express");
+const auth = require("./routes/auth.js");
 
-const router = express.Router();
-
-router.get("/", async (req, res) => {
-  console.log("hello?");
-});
-
-module.exports = router;
+module.exports = async (app) => {
+  // Login, Logout, Join
+  auth(app);
+};
