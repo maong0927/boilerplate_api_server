@@ -1,6 +1,7 @@
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { User } = require("../models");
 
 module.exports = new (class AuthService {
   join(body) {
