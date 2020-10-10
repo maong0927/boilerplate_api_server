@@ -3,22 +3,18 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { User } = require("../models");
 
-module.exports = new (class AuthService {
-  async join(body) {
-    const { email, password, name } = body;
+exports.join = async (body) => {
+  const { email, password, name } = body;
+
+  try {
     const saltRounds = 10;
-    bcrypt.hash(password, saltRounds, async (err, hash) => {
-      if (err) return next(err);
-      try {
-        await User.create({
-          email,
-          password: hash,
-          name,
-        });
-      } catch (err) {
-        console.error(err);
-        return res.status(407);
-      }
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    await User.create({
+      email,
+      password: hashedPassword,
+      name,
     });
+  } catch (err) {
+    throw new Error(err.message);
   }
-})();
+};

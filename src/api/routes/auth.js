@@ -4,7 +4,7 @@ const config = require("../../config");
 const authService = require("../../services/auth");
 
 const router = Router();
-module.exports = (app) => {
+module.exports = async (app) => {
   app.use("/auth", router);
   app.use(errors());
   router.post(
@@ -19,9 +19,10 @@ module.exports = (app) => {
     async (req, res, next) => {
       try {
         await authService.join(req.body);
-        res.json({ message: "success" });
+        return res.json({ message: "success" });
       } catch (err) {
-        res.status(401).json({ message: err.message });
+        console.error(`👻${err.message}`);
+        return res.status(407).json({ message: err.message });
       }
     }
   );
