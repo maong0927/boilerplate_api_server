@@ -7,13 +7,6 @@ process.env.PORT = process.env.PORT || 3000;
 
 module.exports = {
   port: process.env.PORT,
-
-  username: db.username,
-  password: db.password,
-  database: db.database,
-  host: db.host,
-  dialect: db.dialect,
-  operatorAliases: false,
-
+  db,
   pwdRestriction: auth.pwdRestriction,
 };

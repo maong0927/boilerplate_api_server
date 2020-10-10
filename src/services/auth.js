@@ -3,16 +3,15 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 module.exports = new (class AuthService {
-  constructor() {}
-  
   join(body) {
+    const { email, password, name } = body;
     bcrypt.hash(password, saltRounds, async (err, hash) => {
       if (err) return next(err);
-        await User.create({
-          email,
-          password: hash,
-          name,
-        })}
+      await User.create({
+        email,
+        password: hash,
+        name,
+      });
     });
   }
 })();
