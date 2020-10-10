@@ -18,7 +18,7 @@ module.exports = (app) => {
     }),
     async (req, res, next) => {
       try {
-        authService.join(req.body);
+        await authService.join(req.body);
         res.json({ message: "success" });
       } catch (err) {
         res.status(401).json({ message: err.message });
