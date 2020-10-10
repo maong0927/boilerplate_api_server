@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { celebrate, Joi, errors, Segments } = require("celebrate");
 const config = require("../../config");
+const authService = require("../../services/auth");
 
 const router = Router();
 module.exports = (app) => {
@@ -17,6 +18,7 @@ module.exports = (app) => {
     }),
     async (req, res, next) => {
       try {
+        authService.join();
         res.json({ message: "success" });
       } catch (err) {
         res.status(401).json({ message: err.message });
