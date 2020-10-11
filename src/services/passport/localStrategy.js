@@ -9,7 +9,6 @@ const passportVerify = async (email, password, done) => {
     const user = await User.findOne({
       where: { email },
     });
-
     if (!user) {
       done(null, false, { reason: "Incorrect username" });
       return;

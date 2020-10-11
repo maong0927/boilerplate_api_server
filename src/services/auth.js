@@ -18,3 +18,13 @@ exports.join = async (body) => {
     throw new Error(err.message);
   }
 };
+
+exports.generateToken = (userInfo) => {
+  return jwt.sign(
+    {
+      email: userInfo.email,
+      name: userInfo.name,
+    },
+    process.env.JWT_SECRET
+  );
+};
